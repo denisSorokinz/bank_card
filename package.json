@@ -1,0 +1,35 @@
+{
+    "name": "react webpack typescript boilerplate",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "webpack",
+        "start": "webpack-dev-server --open --port='3005'"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "react": "^16.13.1",
+        "react-dom": "^16.13.1"
+    },
+    "devDependencies": {
+        "@types/react": "^16.9.51",
+        "@types/react-dom": "^16.9.8",
+        "@types/webpack": "^4.41.22",
+        "css-loader": "^4.3.0",
+        "css-minimizer-webpack-plugin": "^1.1.4",
+        "html-webpack-plugin": "^4.5.0",
+        "mini-css-extract-plugin": "^0.11.3",
+        "sass-loader": "^10.0.2",
+        "style-loader": "^1.3.0",
+        "terser-webpack-plugin": "^4.2.2",
+        "ts-loader": "^8.0.4",
+        "typescript": "^4.0.3",
+        "webpack": "^4.44.2",
+        "webpack-cli": "^3.3.12",
+        "webpack-dev-server": "^3.11.0"
+    }
+}
