@@ -40,6 +40,9 @@ module.exports = {
     plugins: [
         new HtmlWebpackPlugin({
             template: path.join(__dirname, "public", "index.html"),
+            minify: {
+                collapseWhitespace: true
+            }
         }),
         new MiniCssExtractPlugin(),
     ],
