@@ -25,6 +25,13 @@ module.exports = {
                 use: [MiniCssExtractPlugin.loader, "css-loader"],
                 exclude: ["/node_modules/"],
             },
+            {
+                test: [
+                    /\.(woff(2)?|ttf|eot|svg)(\?v=\d+\.\d+\.\d+)?$/,
+                    /\.(png|svg|jpg|gif)$/,
+                ],
+                use: ["file-loader"],
+            },
         ],
     },
     optimization: {
@@ -36,13 +43,17 @@ module.exports = {
     },
     resolve: {
         extensions: [".tsx", ".ts", ".js"],
+        alias: {
+            Assets: path.resolve(__dirname, "src", "assets"),
+            Components: path.resolve(__dirname, "src", "components"),
+        },
     },
     plugins: [
         new HtmlWebpackPlugin({
             template: path.join(__dirname, "public", "index.html"),
             minify: {
-                collapseWhitespace: true
-            }
+                collapseWhitespace: true,
+            },
         }),
         new MiniCssExtractPlugin(),
     ],
