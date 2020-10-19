@@ -44,8 +44,14 @@ module.exports = {
     resolve: {
         extensions: [".tsx", ".ts", ".js"],
         alias: {
-            Assets: path.resolve(__dirname, "src", "assets"),
-            Components: path.resolve(__dirname, "src", "components"),
+            Assets: path.join(__dirname, "src", "assets"),
+            Components: path.join(__dirname, "src", "components"),
+            Entity: path.join(__dirname, "src", "entity"),
+            Hooks: path.join(__dirname, "src", "hooks"),
+            Contexts: path.join(__dirname, "src", "contexts"),
+            Constants: path.join(__dirname, "src", "constants"),
+            Types: path.join(__dirname, "src", "types"),
+            Utils: path.join(__dirname, "src", "utils"),
         },
     },
     plugins: [

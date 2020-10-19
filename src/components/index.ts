@@ -1,15 +1,19 @@
 import App from "Components/App";
 import Header from "Components/Header";
-import { BankCard, BankCardContainer } from "Components/BankCard";
-import { BankCardDetails, BankCardDetailsContainer } from "Components/BankCardDetails";
-import { Row, Column } from "Components/Layout";
+import { BankCard, BankCardWrapper } from "Components/BankCard";
+import {
+    BankCardDetails,
+    BankCardDetailsWrapper,
+} from "Components/BankCardDetails";
+import { Row, Column } from "Components/Grid";
 
 export {
     App,
     Header,
-    BankCardContainer,
+    BankCardWrapper,
     BankCard,
     BankCardDetails,
-    BankCardDetailsContainer,
-    Row, Column
+    BankCardDetailsWrapper,
+    Row,
+    Column,
 };

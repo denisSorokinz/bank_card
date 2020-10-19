@@ -1,58 +1,30 @@
 import React from "react";
 import styled from "styled-components";
-import colors from "Assets/colors";
-import CardLogoImage from "Assets/images/card_logo.svg";
-import CardLogo from "./BankCardLogo";
-import BankCardField from "./BankCardField";
-import { Row, Column } from "Components/Layout";
+import { StyledComponentClassNameProp } from "Entity";
+import BankCardInner from "./BankCardInner";
+import BankCardFrontSide from "./BankCardFrontSide";
+import BankCardBackSide from "./BankCardBackSide";
+import { StateContainer } from "Contexts";
+import { getCardNumberWithAsterisks } from "Utils";
 
-// Create a state container - modify it in "CardDetails" and display here
-// Accept an array of inputs, filter by types and render
-
-interface BankCardProps {
-    className?: string;
-}
-
-const BankCard: React.FC<BankCardProps> = ({ className }) => {
+const BankCard: React.FC<StyledComponentClassNameProp> = ({ className }) => {
+    const [cardData, dispatchCardData] = StateContainer.useContainer();
+    const BankCardNumber = getCardNumberWithAsterisks();
     return (
         <div className={className}>
-            <CardLogo src={CardLogoImage} />
-            {/* cardFields.map() loop */}
-            <Row>
-                <Column noPaddings>
-                    <BankCardField cardNumberField>
-                        <Column size={0.25} noPaddings centerContent>
-                            <span>1234</span>
-                        </Column>
-                        <Column size={0.25} noPaddings centerContent>
-                            <span>5174</span>
-                        </Column>
-                        <Column size={0.25} noPaddings centerContent>
-                            <span>5473</span>
-                        </Column>
-                        <Column size={0.25} noPaddings centerContent>
-                            <span>1047</span>
-                        </Column>
-                    </BankCardField>
-                </Column>
-            </Row>
-            <Row>
-                <Column size={0.5}>
-                    <BankCardField>Jack Daniels</BankCardField>
-                </Column>
-                <Column size={0.5}>
-                    <BankCardField textRight>05/05</BankCardField>
-                </Column>
-            </Row>
+            <BankCardInner>
+                <BankCardFrontSide />
+                <BankCardBackSide />
+            </BankCardInner>
         </div>
     );
 };
 
 const StyledBankCard = styled(BankCard)`
     margin: auto;
-    padding: 1.5rem;
-    background-color: ${colors.lightPink};
-    border-radius: 1rem;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    perspective: 50rem;
 `;
 
 export default StyledBankCard;

@@ -1,14 +1,14 @@
 import styled, { css } from "styled-components";
 
 interface ColumnProps {
-    size?: number;
+    columnSize?: number;
     noPaddings?: boolean;
     centerContent?: boolean;
 }
 
 const Column = styled.div`
     padding: 0 1rem;
-    width: ${({ size = 1 }: ColumnProps) => `${size * 100}%`};
+    width: ${({ columnSize: size = 1 }: ColumnProps) => `${size * 100}%`};
     ${({ noPaddings }: ColumnProps) =>
         noPaddings
             ? css`

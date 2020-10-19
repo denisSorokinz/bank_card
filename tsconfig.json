@@ -9,10 +9,24 @@
         "moduleResolution": "node",
         "baseUrl": "./",
         "paths": {
+            "Assets": ["src/assets"],
             "Assets/*": ["src/assets/*"],
             "Components": ["src/components"],
-            "Components/*": ["src/components/*"]
+            "Components/*": ["src/components/*"],
+            "Entity": ["src/entity"],
+            "Entity/*": ["src/entity/*"],
+            "Hooks": ["src/hooks"],
+            "Hooks/*": ["src/hooks/*"],
+            "Contexts": ["src/contexts"],
+            "Contexts/*": ["src/contexts/*"],
+            "Constants": ["src/constants"],
+            "Constants/*": ["src/constants/*"],
+            "Types": ["src/types"],
+            "Types/*": ["src/types/*"],
+            "Utils": ["src/utils"],
+            "Utils/*": ["src/utils/*"]
         },
+        "downlevelIteration": true,
         /* Strict Type-Checking Options */
         "strict": true /* Enable all strict type-checking options. */,
         "noImplicitAny": true /* Raise error on expressions and declarations with an implied 'any' type. */,
