@@ -1,16 +1,8 @@
 import { BankCardNumberLength, BankCardNumberSpacing } from "Constants";
 
-const getCardNumberWithAsterisks = (
-    currentCardNumber: string,
-    actionPayload?: string
-): string => {
+const getCardNumberWithAsterisks = (currentCardNumber: string): string => {
     let cardNumberWithAsterisks = addAsterisksToEnd(currentCardNumber);
-    const firstAsteriskIndex = cardNumberWithAsterisks.indexOf("*");
     let cardNumberCharacters = [...cardNumberWithAsterisks.slice()];
-    if (firstAsteriskIndex != -1 && actionPayload) {
-        // if payload "123" -> "123* **** ****"
-        cardNumberCharacters.splice(firstAsteriskIndex, 1, actionPayload);
-    }
     cardNumberCharacters = addSpacesBetweenCharacters(cardNumberCharacters);
     cardNumberWithAsterisks = cardNumberCharacters.join("");
     return cardNumberWithAsterisks;

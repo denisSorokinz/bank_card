@@ -2,11 +2,17 @@ import React from "react";
 import styled from "styled-components";
 import BankCardField from "./BankCardField";
 import { Row, Column } from "Components";
-import { StyledComponentClassNameProp } from "Entity";
 import colors from "Assets/colors";
+import { BankCardState } from "Entity";
 
-const BankCardBackSide: React.FC<StyledComponentClassNameProp> = ({
+interface BankCardSideProps {
+    BankCardState: BankCardState;
+    className?: string;
+}
+
+const BankCardBackSide: React.FC<BankCardSideProps> = ({
     className,
+    BankCardState
 }) => {
     return (
         <div className={className}>
@@ -14,7 +20,7 @@ const BankCardBackSide: React.FC<StyledComponentClassNameProp> = ({
                 <Column noPaddings>
                     <BankCardField cardNumberField>
                         <Column columnSize={0.25} noPaddings centerContent>
-                            <span>1234</span>
+                            <span>{BankCardState.secureCode}</span>
                         </Column>
                     </BankCardField>
                 </Column>

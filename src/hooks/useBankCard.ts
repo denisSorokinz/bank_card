@@ -24,19 +24,33 @@ const useBankCard = (
 };
 
 const reducer = (state: BankCardState, action: ReducerAction) => {
-    // ! - element exists
-    if (action.type in ReducerActions) {
+    // ! means element exists
+    if (action.type in ReducerActions && action.payload.trim() == "") {
         switch (action.type) {
             case ReducerActions.setCardNumber:
-                if (action.payload.length == BankCardNumberLength) return state;
+                if (state.cardNumber.length == BankCardNumberLength)
+                    return state;
                 return {
                     ...state,
                     ...{
                         [BankCardFields.cardNumber]: action.payload!,
                     },
                 };
-            default:
-                return state;
+            case ReducerActions.setExpiryDate:
+                return {
+                    ...state,
+                    ...{ [BankCardFields.expiryDate]: action.payload! },
+                };
+            case ReducerActions.setSecureCode:
+                return {
+                    ...state,
+                    ...{ [BankCardFields.secureCode]: action.payload! },
+                };
+            case ReducerActions.setOwnerName:
+                return {
+                    ...state,
+                    ...{ [BankCardFields.ownerName]: action.payload! },
+                };
         }
     }
     return state;

@@ -4,14 +4,18 @@ import CardLogoImage from "Assets/images/card_logo.svg";
 import CardLogo from "./BankCardLogo";
 import BankCardField from "./BankCardField";
 import { Row, Column } from "Components";
-import { StyledComponentClassNameProp } from "Entity";
 import colors from "Assets/colors";
-import { StateContainer } from "Contexts";
+import { BankCardState } from "Entity";
 
-const BankCardFrontSide: React.FC<StyledComponentClassNameProp> = ({
+interface BankCardSideProps {
+    BankCardState: BankCardState;
+    className?: string;
+}
+
+const BankCardFrontSide: React.FC<BankCardSideProps> = ({
     className,
+    BankCardState,
 }) => {
-    const [cardData, setCardData] = StateContainer.useContainer();
     return (
         <div className={className}>
             <CardLogo src={CardLogoImage} />
@@ -20,17 +24,19 @@ const BankCardFrontSide: React.FC<StyledComponentClassNameProp> = ({
                 <Column noPaddings>
                     <BankCardField cardNumberField>
                         <Column columnSize={1} noPaddings centerContent>
-                            <span>{cardData.cardNumber}</span>
+                            <span>{BankCardState.cardNumber}</span>
                         </Column>
                     </BankCardField>
                 </Column>
             </Row>
             <Row>
                 <Column columnSize={0.5}>
-                    <BankCardField>{cardData.ownerName}</BankCardField>
+                    <BankCardField>{BankCardState.ownerName}</BankCardField>
                 </Column>
                 <Column columnSize={0.5}>
-                    <BankCardField textRight>{cardData.expiryDate}</BankCardField>
+                    <BankCardField textRight>
+                        {BankCardState.expiryDate}
+                    </BankCardField>
                 </Column>
             </Row>
         </div>

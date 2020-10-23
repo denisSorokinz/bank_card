@@ -1,4 +1,3 @@
-import React from "react";
 import { BankCardFieldTypes } from "Types";
 import { BankCardFields, ReducerActions } from "Constants";
 import ReducerAction from "./ReducerAction";
