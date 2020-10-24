@@ -1,14 +1,26 @@
-import { cardNumberType } from "Types";
-import { BankCardNumberLength } from "Constants";
+import { CardNumberLength, BankCardFields } from "Constants";
+import { BankCardState } from "Entity";
 
 const applyPayloadToCardNumber = (
-    cardNumber: cardNumberType,
+    state: BankCardState,
     payload: string
-): cardNumberType => {
-    return `${cardNumber}`.length == BankCardNumberLength
-        ? cardNumber
-        : parseInt(`${cardNumber}${payload}`);
+): BankCardState => {
+    // * Copy state in case if the target value is not primitive
+    const stateCopy = Object.assign({}, state);
+    let { cardNumber } = stateCopy;
+    if (cardNumber != null) {
+        cardNumber =
+            cardNumber.toString().length == CardNumberLength
+                ? cardNumber
+                : parseInt(payload);
+        console.log(cardNumber, payload);
+    } else {
+        cardNumber = parseInt(payload);
+    }
+    return {
+        ...state,
+        [BankCardFields.cardNumber]: cardNumber,
+    };
 };
-
 
 export default applyPayloadToCardNumber;

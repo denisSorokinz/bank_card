@@ -3,16 +3,16 @@ import styled from "styled-components";
 import BankCardField from "./BankCardField";
 import { Row, Column } from "Components";
 import colors from "Assets/colors";
-import { BankCardState } from "Entity";
+import { BankCardStateToDisplay } from "Entity";
 
 interface BankCardSideProps {
-    BankCardState: BankCardState;
+    BankCardStateToDisplay: BankCardStateToDisplay;
     className?: string;
 }
 
 const BankCardBackSide: React.FC<BankCardSideProps> = ({
     className,
-    BankCardState
+    BankCardStateToDisplay
 }) => {
     return (
         <div className={className}>
@@ -20,7 +20,7 @@ const BankCardBackSide: React.FC<BankCardSideProps> = ({
                 <Column noPaddings>
                     <BankCardField cardNumberField>
                         <Column columnSize={0.25} noPaddings centerContent>
-                            <span>{BankCardState.secureCode}</span>
+                            <span>{BankCardStateToDisplay.secureCode}</span>
                         </Column>
                     </BankCardField>
                 </Column>

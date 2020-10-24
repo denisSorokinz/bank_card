@@ -1,12 +1,19 @@
 import BankCardFields from "./BankCardFields";
 import ReducerActions from "./ReducerActions";
 import BankCardJsxFields from "./BankCardJsxFields";
-import {BankCardNumberLength, BankCardNumberSpacing} from "./BankCardNumberDetails";
+import {
+    CardNumberLength,
+    CardNumberSpacing,
+    SecureCodeLength,
+    OwnerNameLength
+} from "./BankCardFieldsLength";
 
 export {
     BankCardFields,
     ReducerActions,
     BankCardJsxFields,
-    BankCardNumberLength,
-    BankCardNumberSpacing
+    CardNumberLength,
+    CardNumberSpacing,
+    SecureCodeLength,
+    OwnerNameLength
 };

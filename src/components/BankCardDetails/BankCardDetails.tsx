@@ -7,6 +7,7 @@ import { Row, Column } from "Components";
 import { StateContainer } from "Contexts";
 import { BankCardJsxFields } from "Constants";
 import { useDetailsRows } from "Hooks";
+import { BankCardJsxField, BankCardState } from "Entity";
 
 const BankCardDetails: React.FC = () => {
     const [cardData, dispatchCardData] = StateContainer.useContainer();
@@ -38,7 +39,13 @@ const BankCardDetails: React.FC = () => {
                                         name={cardField.fieldName}
                                         id={cardField.fieldName}
                                         placeholder={cardField.placeholder}
-                                        value={cardData[cardField.fieldName]}
+                                        value={
+                                            cardData[cardField.fieldName]
+                                                ? cardData[
+                                                      cardField.fieldName
+                                                  ]!.toString()
+                                                : ""
+                                        }
                                         onChange={(
                                             ev: React.FormEvent<
                                                 HTMLInputElement

@@ -1,19 +1,31 @@
 import { useReducer } from "react";
-import { BankCardState, ReducerAction, ReducerDispatcher } from "Entity";
+import {
+    BankCardState,
+    ReducerAction,
+    ReducerDispatcher,
+} from "Entity";
 import {
     BankCardFields,
     ReducerActions,
 } from "Constants";
-import { applyPayloadToCardNumber } from "Utils";
+import {
+    applyPayloadToCardNumber,
+    applyPayloadToExpiryDate,
+    applyPayloadToSecureCode,
+    applyPayloadToOwnerName
+} from "Utils";
 
 const useBankCard = (
     initialState: BankCardState = {
-        [BankCardFields.cardNumber]: undefined,
-        [BankCardFields.expiryDate]: undefined,
-        [BankCardFields.secureCode]: undefined,
-        [BankCardFields.ownerName]: undefined,
+        [BankCardFields.cardNumber]: null,
+        [BankCardFields.expiryDate]: null,
+        [BankCardFields.secureCode]: null,
+        [BankCardFields.ownerName]: null,
     }
-): [state: BankCardState, dispatcher: ReducerDispatcher] => {
+): [
+    state: BankCardState,
+    dispatcher: ReducerDispatcher
+] => {
     // third parameter for lazy load
     let [cardData, setCardData] = useReducer(
         reducer,
@@ -23,35 +35,44 @@ const useBankCard = (
     return [cardData, setCardData];
 };
 
-const reducer = (state: BankCardState, action: ReducerAction) => {
+const reducer = (
+    state: BankCardState,
+    action: ReducerAction
+) => {
     // ! means element exists
-    if (action.type in ReducerActions && action.payload.trim() == "") {
+    if (
+        action.type in ReducerActions &&
+        action.payload.trim() != ""
+    ) {
+        let modifiedState;
         switch (action.type) {
             case ReducerActions.setCardNumber:
-                const cardNumber = applyPayloadToCardNumber(state.cardNumber!, action.payload);
-                return {
-                    ...state,
-                    ...{
-                        [BankCardFields.cardNumber]: cardNumber,
-                    },
-                };
+                modifiedState = applyPayloadToCardNumber(
+                    state,
+                    action.payload
+                );
+                break;
             // ! Implement other 3 methods and return a valid state
             case ReducerActions.setExpiryDate:
-                return {
-                    ...state,
-                    ...{ [BankCardFields.expiryDate]: action.payload! },
-                };
+                modifiedState = applyPayloadToExpiryDate(
+                    state,
+                    action.payload
+                );
+                break;
             case ReducerActions.setSecureCode:
-                return {
-                    ...state,
-                    ...{ [BankCardFields.secureCode]: action.payload! },
-                };
+                modifiedState = applyPayloadToSecureCode(
+                    state,
+                    action.payload
+                );
+                break;
             case ReducerActions.setOwnerName:
-                return {
-                    ...state,
-                    ...{ [BankCardFields.ownerName]: action.payload! },
-                };
+                modifiedState = applyPayloadToOwnerName(
+                    state,
+                    action.payload
+                );
+                break;
         }
+        return modifiedState;
     }
     return state;
 };

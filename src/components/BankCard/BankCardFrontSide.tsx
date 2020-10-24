@@ -5,16 +5,16 @@ import CardLogo from "./BankCardLogo";
 import BankCardField from "./BankCardField";
 import { Row, Column } from "Components";
 import colors from "Assets/colors";
-import { BankCardState } from "Entity";
+import { BankCardStateToDisplay } from "Entity";
 
 interface BankCardSideProps {
-    BankCardState: BankCardState;
+    BankCardStateToDisplay: BankCardStateToDisplay;
     className?: string;
 }
 
 const BankCardFrontSide: React.FC<BankCardSideProps> = ({
     className,
-    BankCardState,
+    BankCardStateToDisplay,
 }) => {
     return (
         <div className={className}>
@@ -24,18 +24,18 @@ const BankCardFrontSide: React.FC<BankCardSideProps> = ({
                 <Column noPaddings>
                     <BankCardField cardNumberField>
                         <Column columnSize={1} noPaddings centerContent>
-                            <span>{BankCardState.cardNumber}</span>
+                            <span>{BankCardStateToDisplay.cardNumber}</span>
                         </Column>
                     </BankCardField>
                 </Column>
             </Row>
             <Row>
                 <Column columnSize={0.5}>
-                    <BankCardField>{BankCardState.ownerName}</BankCardField>
+                    <BankCardField>{BankCardStateToDisplay.ownerName}</BankCardField>
                 </Column>
                 <Column columnSize={0.5}>
                     <BankCardField textRight>
-                        {BankCardState.expiryDate}
+                        {BankCardStateToDisplay.expiryDate}
                     </BankCardField>
                 </Column>
             </Row>
