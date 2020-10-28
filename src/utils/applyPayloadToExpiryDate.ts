@@ -11,6 +11,7 @@ const applyPayloadToExpiryDate = (
     expiryDate = new Date(payload);
     return {
         ...state,
+        isCardFlipped: false,
         [BankCardFields.expiryDate]: expiryDate,
     };
 };

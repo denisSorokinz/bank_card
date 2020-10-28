@@ -13,6 +13,7 @@ interface BankCardState {
     [BankCardFields.expiryDate]: expiryDateType | null;
     [BankCardFields.secureCode]: secureCodeType | null;
     [BankCardFields.ownerName]: ownerNameType | null;
+    isCardFlipped: boolean;
 }
 
 export default BankCardState;

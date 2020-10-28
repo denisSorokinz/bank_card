@@ -7,6 +7,7 @@ interface BankCardStateToDisplay {
     [BankCardFields.expiryDate]: string;
     [BankCardFields.secureCode]: string;
     [BankCardFields.ownerName]: string;
+    isCardFlipped: boolean;
 }
 
 export default BankCardStateToDisplay;

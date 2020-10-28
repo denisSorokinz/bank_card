@@ -18,6 +18,7 @@ const applyPayloadToOwnerName = (
     }
     return {
         ...state,
+        isCardFlipped: false,
         [BankCardFields.ownerName]: ownerName,
     };
 };

@@ -21,6 +21,7 @@ const useBankCard = (
         [BankCardFields.expiryDate]: null,
         [BankCardFields.secureCode]: null,
         [BankCardFields.ownerName]: null,
+        isCardFlipped: false
     }
 ): [
     state: BankCardState,
@@ -49,10 +50,9 @@ const reducer = (
             case ReducerActions.setCardNumber:
                 modifiedState = applyPayloadToCardNumber(
                     state,
-                    action.payload
+                    action.payload,
                 );
                 break;
-            // ! Implement other 3 methods and return a valid state
             case ReducerActions.setExpiryDate:
                 modifiedState = applyPayloadToExpiryDate(
                     state,

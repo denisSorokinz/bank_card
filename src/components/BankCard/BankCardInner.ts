@@ -1,5 +1,9 @@
-import { BankCardJsxFields } from 'Constants';
-import styled from 'styled-components';
+import { BankCardJsxFields } from "Constants";
+import styled from "styled-components";
+
+interface BankCardInnerProps {
+    isCardFlipped: boolean;
+}
 
 const BankCardInner = styled.div`
     position: relative;
@@ -12,9 +16,8 @@ const BankCardInner = styled.div`
     // to achieve a flip effect
     // calculating algorithm: each field needs at least 3 rem of space
     min-height: ${BankCardJsxFields.length * 3}rem;
-    &:hover {
-        transform: rotateY(-180deg);
-    }
+    transform: ${({ isCardFlipped }: BankCardInnerProps) =>
+        isCardFlipped ? "rotateY(-180deg)" : null};
 `;
 
 export default BankCardInner;

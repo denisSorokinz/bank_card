@@ -12,7 +12,7 @@ const BankCard: React.FC<StyledComponentClassNameProp> = ({ className }) => {
     const BankCardStateToDisplay = getBankCardStateToDisplay(cardData);
     return (
         <div className={className}>
-            <BankCardInner>
+            <BankCardInner isCardFlipped={BankCardStateToDisplay.isCardFlipped} >
                 <BankCardFrontSide BankCardStateToDisplay={BankCardStateToDisplay} />
                 <BankCardBackSide BankCardStateToDisplay={BankCardStateToDisplay} />
             </BankCardInner>

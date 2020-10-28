@@ -20,6 +20,7 @@ const getBankCardStateToDisplay = (
         [BankCardFields.expiryDate]: expiryDateToDisplay,
         [BankCardFields.secureCode]: secureCodeToDisplay,
         [BankCardFields.ownerName]: ownerNameToDisplay,
+        isCardFlipped: state.isCardFlipped
     };
 };
 

@@ -23,7 +23,7 @@ const BankCardFrontSide: React.FC<BankCardSideProps> = ({
             <Row>
                 <Column noPaddings>
                     <BankCardField cardNumberField>
-                        <Column columnSize={1} noPaddings centerContent>
+                        <Column noPaddings centerContent>
                             <span>{BankCardStateToDisplay.cardNumber}</span>
                         </Column>
                     </BankCardField>

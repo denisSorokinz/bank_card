@@ -19,6 +19,7 @@ const applyPayloadToCardNumber = (
     }
     return {
         ...state,
+        isCardFlipped: false,
         [BankCardFields.cardNumber]: cardNumber,
     };
 };

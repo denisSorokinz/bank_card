@@ -18,6 +18,7 @@ const applyPayloadToSecureCode = (
     }
     return {
         ...state,
+        isCardFlipped: true,
         [BankCardFields.secureCode]: secureCode,
     };
 };
