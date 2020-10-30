@@ -7,12 +7,12 @@ const applyPayloadToExpiryDate = (
 ): BankCardState => {
     // * Copy state in case if the target value is not primitive
     const stateCopy = Object.assign({}, state);
-    let { expiryDate } = stateCopy;
-    expiryDate = new Date(payload);
+    let { expiryDate: currentExpiryDate } = stateCopy;
+    currentExpiryDate = new Date(payload);
     return {
         ...state,
         isCardFlipped: false,
-        [BankCardFields.expiryDate]: expiryDate,
+        [BankCardFields.expiryDate]: currentExpiryDate,
     };
 };
 

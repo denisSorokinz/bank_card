@@ -42,8 +42,7 @@ const reducer = (
 ) => {
     // ! means element exists
     if (
-        action.type in ReducerActions &&
-        action.payload.trim() != ""
+        action.type in ReducerActions
     ) {
         let modifiedState;
         switch (action.type) {

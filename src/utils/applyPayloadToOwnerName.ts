@@ -7,19 +7,20 @@ const applyPayloadToOwnerName = (
 ): BankCardState => {
     // * Copy state in case if the target value is not primitive
     const stateCopy = Object.assign({}, state);
-    let { ownerName } = stateCopy;
-    if (ownerName != null) {
-        ownerName =
-            ownerName.toString().length == OwnerNameLength
-                ? ownerName
+    let { ownerName: currentOwnerName } = stateCopy;
+    if (currentOwnerName != null) {
+        currentOwnerName =
+            payload.toString().length > OwnerNameLength
+                ? currentOwnerName
                 : payload;
     } else {
-        ownerName = payload;
+        currentOwnerName = payload;
     }
+    if (payload == "") currentOwnerName = null;
     return {
         ...state,
         isCardFlipped: false,
-        [BankCardFields.ownerName]: ownerName,
+        [BankCardFields.ownerName]: currentOwnerName,
     };
 };
 

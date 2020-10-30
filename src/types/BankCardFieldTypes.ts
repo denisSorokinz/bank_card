@@ -1,13 +1,14 @@
-type cardNumber = number;
-type expiryDate = Date;
-type secureCode = number;
-type ownerName = string;
+type cardNumber = number | null;
+type expiryDate = Date | null;
+type secureCode = number | null;
+type ownerName = string | null;
 
 type BankCardFieldTypes =
     cardNumber |
     expiryDate |
     secureCode |
-    ownerName;
+    ownerName |
+    null;
 
 export {
     BankCardFieldTypes,

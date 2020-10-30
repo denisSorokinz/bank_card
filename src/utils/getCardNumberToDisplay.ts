@@ -9,7 +9,8 @@ const getCardNumberToDisplay = (cardNumber: cardNumberType): string => {
     return cardNumberToDisplay;
 };
 
-const addAsterisksToEnd = (cardNumber: number) => {
+const addAsterisksToEnd = (cardNumber: cardNumberType) => {
+    if (cardNumber == null) return "*".repeat(CardNumberLength);
     return (
         cardNumber +
         "*".repeat(CardNumberLength - cardNumber.toString().length)
