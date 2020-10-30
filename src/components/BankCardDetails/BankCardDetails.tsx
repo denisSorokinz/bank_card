@@ -39,11 +39,6 @@ const BankCardDetails: React.FC = () => {
                                         name={cardField.fieldName}
                                         id={cardField.fieldName}
                                         placeholder={cardField.placeholder}
-                                        // pattern={
-                                        //     cardField.type == "datetime-local"
-                                        //         ? "d{1,2}/d{1,2}/d{4}"
-                                        //         : undefined
-                                        // }
                                         value={getDetailsDisplayValue(
                                             cardField,
                                             cardData
