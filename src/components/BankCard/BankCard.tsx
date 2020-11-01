@@ -25,6 +25,8 @@ const StyledBankCard = styled(BankCard)`
     transition: transform 0.8s;
     transform-style: preserve-3d;
     perspective: 50rem;
+    max-width: 20rem;
+    max-height: 12rem;
 `;
 
 export default StyledBankCard;

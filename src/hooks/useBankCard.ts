@@ -4,17 +4,13 @@ import {
     ReducerAction,
     ReducerDispatcher,
 } from "Entity";
-import {
-    BankCardFields,
-    ReducerActions,
-} from "Constants";
+import { BankCardFields, ReducerActions } from "Constants";
 import {
     applyPayloadToCardNumber,
     applyPayloadToExpiryDate,
     applyPayloadToSecureCode,
-    applyPayloadToOwnerName
+    applyPayloadToOwnerName,
 } from "Utils";
-
 const useBankCard = (
     initialState: BankCardState = {
         [BankCardFields.cardNumber]: null,
@@ -22,10 +18,7 @@ const useBankCard = (
         [BankCardFields.secureCode]: null,
         [BankCardFields.ownerName]: null,
     }
-): [
-    state: BankCardState,
-    dispatcher: ReducerDispatcher
-] => {
+): [state: BankCardState, dispatcher: ReducerDispatcher] => {
     // third parameter for lazy load
     let [cardData, setCardData] = useReducer(
         reducer,
@@ -35,10 +28,7 @@ const useBankCard = (
     return [cardData, setCardData];
 };
 
-const reducer = (
-    state: BankCardState,
-    action: ReducerAction
-) => {
+const reducer = (state: BankCardState, action: ReducerAction) => {
     // ! means element exists
     if (
         action.type in ReducerActions &&
@@ -52,7 +42,6 @@ const reducer = (
                     action.payload
                 );
                 break;
-            // ! Implement other 3 methods and return a valid state
             case ReducerActions.setExpiryDate:
                 modifiedState = applyPayloadToExpiryDate(
                     state,
