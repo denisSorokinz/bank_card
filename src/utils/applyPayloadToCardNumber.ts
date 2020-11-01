@@ -7,19 +7,20 @@ const applyPayloadToCardNumber = (
 ): BankCardState => {
     // * Copy state in case if the target value is not primitive
     const stateCopy = Object.assign({}, state);
-    let { cardNumber } = stateCopy;
-    if (cardNumber != null) {
-        cardNumber =
-            cardNumber.toString().length == CardNumberLength
-                ? cardNumber
+    let { cardNumber: currentCardNumber } = stateCopy;
+    if (currentCardNumber != null) {
+        currentCardNumber =
+            payload.toString().length > CardNumberLength
+                ? currentCardNumber
                 : parseInt(payload);
-        console.log(cardNumber, payload);
     } else {
-        cardNumber = parseInt(payload);
+        currentCardNumber = parseInt(payload);
     }
+    if (payload == "") currentCardNumber = null;
     return {
         ...state,
-        [BankCardFields.cardNumber]: cardNumber,
+        isCardFlipped: false,
+        [BankCardFields.cardNumber]: currentCardNumber,
     };
 };
 

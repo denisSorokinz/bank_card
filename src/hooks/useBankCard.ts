@@ -17,6 +17,7 @@ const useBankCard = (
         [BankCardFields.expiryDate]: null,
         [BankCardFields.secureCode]: null,
         [BankCardFields.ownerName]: null,
+        isCardFlipped: false
     }
 ): [state: BankCardState, dispatcher: ReducerDispatcher] => {
     // third parameter for lazy load
@@ -31,15 +32,14 @@ const useBankCard = (
 const reducer = (state: BankCardState, action: ReducerAction) => {
     // ! means element exists
     if (
-        action.type in ReducerActions &&
-        action.payload.trim() != ""
+        action.type in ReducerActions
     ) {
         let modifiedState;
         switch (action.type) {
             case ReducerActions.setCardNumber:
                 modifiedState = applyPayloadToCardNumber(
                     state,
-                    action.payload
+                    action.payload,
                 );
                 break;
             case ReducerActions.setExpiryDate:

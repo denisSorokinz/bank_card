@@ -7,18 +7,20 @@ const applyPayloadToSecureCode = (
 ): BankCardState => {
     // * Copy state in case if the target value is not primitive
     const stateCopy = Object.assign({}, state);
-    let { secureCode } = stateCopy;
-    if (secureCode != null) {
-        secureCode =
-            secureCode.toString().length == SecureCodeLength
-                ? secureCode
+    let { secureCode: currentSecureCode } = stateCopy;
+    if (currentSecureCode != null) {
+        currentSecureCode =
+            payload.toString().length > SecureCodeLength
+                ? currentSecureCode
                 : parseInt(payload);
     } else {
-        secureCode = parseInt(payload);
+        currentSecureCode = parseInt(payload);
     }
+    if (payload == "") currentSecureCode = null;
     return {
         ...state,
-        [BankCardFields.secureCode]: secureCode,
+        isCardFlipped: true,
+        [BankCardFields.secureCode]: currentSecureCode,
     };
 };
 

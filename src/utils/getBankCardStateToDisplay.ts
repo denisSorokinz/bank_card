@@ -7,12 +7,8 @@ const getBankCardStateToDisplay = (
     state: BankCardState
 ): BankCardStateToDisplay => {
     let { cardNumber, expiryDate, secureCode, ownerName } = state;
-    const cardNumberToDisplay = cardNumber
-        ? getCardNumberToDisplay(cardNumber)
-        : "";
-    const expiryDateToDisplay = expiryDate
-        ? getCardExpiryDateToDisplay(expiryDate)
-        : "";
+    const cardNumberToDisplay = getCardNumberToDisplay(cardNumber);
+    const expiryDateToDisplay = getCardExpiryDateToDisplay(expiryDate);
     const secureCodeToDisplay = secureCode ? secureCode.toString() : "";
     const ownerNameToDisplay = ownerName ? ownerName : "";
     return {
@@ -20,6 +16,7 @@ const getBankCardStateToDisplay = (
         [BankCardFields.expiryDate]: expiryDateToDisplay,
         [BankCardFields.secureCode]: secureCodeToDisplay,
         [BankCardFields.ownerName]: ownerNameToDisplay,
+        isCardFlipped: state.isCardFlipped,
     };
 };
 

@@ -8,6 +8,7 @@ interface BankCardFieldProps {
 
 const BankCardField = styled.span`
     display: block;
+    overflow-wrap: break-word;
     color: ${colors.darkGray};
     text-align: ${({ textRight }: BankCardFieldProps) =>
         textRight ? "right" : null};
