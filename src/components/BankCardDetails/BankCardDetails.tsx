@@ -15,13 +15,12 @@ const BankCardDetails: React.FC = () => {
 
     return (
         <DetailsForm method="POST" action="#">
-            {rows.map((row, index) => {
-                let isContentCentered =
-                    row.length == 1 ? "centerContent" : null;
+            {rows.map((row) => {
+                let isContentCentered = row.length == 1 ? "center" : null;
                 return (
                     <Row
                         key={row[0] && row[0].fieldName}
-                        {...isContentCentered}
+                        justifyContent={isContentCentered}
                     >
                         {row.map((cardField) => {
                             return (

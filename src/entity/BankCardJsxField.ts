@@ -10,7 +10,7 @@ interface BankCardField {
     labelText: string;
     reducerActionType: ReducerActions;
     styleAttributes?: {
-        columnSize: number;
+        columnWidth: number;
     };
     value: BankCardFieldTypes;
     onChange:

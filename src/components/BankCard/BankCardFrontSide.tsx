@@ -22,18 +22,18 @@ const BankCardFrontSide: React.FC<BankCardSideProps> = ({
             {/* cardFields.map() loop */}
             <Row>
                 <Column noPaddings>
-                    <BankCardField cardNumberField>
-                        <Column noPaddings centerContent>
+                    <BankCardField textBold>
+                        <Column noPaddings justifyContent={"center"}>
                             <span>{BankCardStateToDisplay.cardNumber}</span>
                         </Column>
                     </BankCardField>
                 </Column>
             </Row>
             <Row>
-                <Column columnSize={0.5}>
+                <Column columnWidth={0.5}>
                     <BankCardField>{BankCardStateToDisplay.ownerName}</BankCardField>
                 </Column>
-                <Column columnSize={0.5}>
+                <Column columnWidth={0.5}>
                     <BankCardField textRight>
                         {BankCardStateToDisplay.expiryDate}
                     </BankCardField>

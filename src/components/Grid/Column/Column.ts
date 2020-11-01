@@ -1,25 +1,34 @@
 import styled, { css } from "styled-components";
 
 interface ColumnProps {
-    columnSize?: number;
+    columnWidth?: number;
     noPaddings?: boolean;
-    centerContent?: boolean;
+    justifyContent?: string;
+    alignItems?: string;
 }
 
 const Column = styled.div`
     padding: 0 1rem;
-    width: ${({ columnSize: size = 1 }: ColumnProps) => `${size * 100}%`};
+    height: 100%;
+    width: ${({ columnWidth: width = 1 }: ColumnProps) => `${width * 100}%`};
     ${({ noPaddings }: ColumnProps) =>
         noPaddings
             ? css`
                   padding: unset;
               `
             : null};
-    ${({ centerContent }: ColumnProps) =>
-        centerContent
+    ${({ justifyContent }: ColumnProps) =>
+        justifyContent
             ? css`
                   display: flex;
-                  justify-content: center;
+                  justify-content: ${justifyContent};
+              `
+            : null};
+    ${({ alignItems }: ColumnProps) =>
+        alignItems
+            ? css`
+                  display: flex;
+                  align-items: ${alignItems};
               `
             : null};
 `;

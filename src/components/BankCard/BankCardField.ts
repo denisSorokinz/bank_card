@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import colors from "Assets/colors";
 
 interface BankCardFieldProps {
-    cardNumberField?: boolean;
+    textBold?: boolean;
     textRight?: boolean;
 }
 
@@ -12,8 +12,8 @@ const BankCardField = styled.span`
     color: ${colors.darkGray};
     text-align: ${({ textRight }: BankCardFieldProps) =>
         textRight ? "right" : null};
-    ${({ cardNumberField: isCardNumberField }: BankCardFieldProps) =>
-        isCardNumberField &&
+    ${({ textBold: isTextBold }: BankCardFieldProps) =>
+        isTextBold &&
         css`
             display: flex;
             span {

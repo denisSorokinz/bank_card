@@ -6,26 +6,26 @@ const useDetailsRows = (
 ): Array<Array<BankCardJsxField>> => {
     let [lastRowStartIndex, setLastRowStartIndex] = useState(0);
     let [currentFieldIndex, setCurrentFieldIndex] = useState(0);
-    const columnSizes = BankCardJsxFields.map((column) => {
-        return column.styleAttributes?.columnSize
-            ? column.styleAttributes.columnSize
+    const columnWidths = BankCardJsxFields.map((column) => {
+        return column.styleAttributes?.columnWidth
+            ? column.styleAttributes.columnWidth
             : 1;
     });
     let rows: [BankCardJsxField[]] = [[]];
     let currentRow = 0;
-    let columnSizesSum = 0;
-    columnSizes.map((val, index) => {
-        columnSizesSum += val;
-        if (columnSizesSum == 1) {
+    let columnWidthsSum = 0;
+    columnWidths.map((val, index) => {
+        columnWidthsSum += val;
+        if (columnWidthsSum == 1) {
             rows[currentRow].push(BankCardJsxFields[index]);
             if (!(index == BankCardJsxFields.length - 1)) rows.push([]);
             currentRow++;
-            columnSizesSum = 0;
-        } else if (columnSizesSum > 1) {
+            columnWidthsSum = 0;
+        } else if (columnWidthsSum > 1) {
             currentRow++;
             rows.push([]);
             rows[currentRow].push(BankCardJsxFields[index]);
-            columnSizesSum = val;
+            columnWidthsSum = val;
         } else {
             rows[currentRow].push(BankCardJsxFields[index]);
         }

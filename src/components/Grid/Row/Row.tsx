@@ -1,8 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 interface RowProps {
-    marginTopBig?: boolean;
-    centerContent?: boolean;
+    minHeight?: string | null;
+    justifyContent?: string | null;
+    alignItems?: string | null;
+    marginTopBig?: boolean | null;
 }
 
 const Row = styled.div`
@@ -11,10 +13,18 @@ const Row = styled.div`
     }
     margin-top: ${({ marginTopBig }: RowProps) =>
         marginTopBig ? "3rem" : null};
+    min-height: ${({ minHeight = null }: RowProps) => minHeight};
     display: flex;
-    justify-content: ${({ centerContent }: RowProps) =>
-        centerContent != null ? "center" : "space-between"};
+    justify-content: ${({ justifyContent = null }: RowProps) => justifyContent};
+    align-items: ${({ alignItems = null }: RowProps) => alignItems};
     flex-wrap: wrap;
+    ${({ minHeight }: RowProps) =>
+        minHeight
+            ? css`
+                  min-height: ${minHeight};
+                  height: 0; // for children's height relative to this parent block
+              `
+            : null};
 `;
 
 export default Row;

@@ -20,7 +20,7 @@ const BankCardJsxFields = [
         labelText: "Expiry Date",
         reducerActionType: ReducerActions.setExpiryDate,
         styleAttributes: {
-            columnSize: 0.5,
+            columnWidth: 0.5,
         },
     },
     {
@@ -30,7 +30,7 @@ const BankCardJsxFields = [
         labelText: "Secure Code",
         reducerActionType: ReducerActions.setSecureCode,
         styleAttributes: {
-            columnSize: 0.5,
+            columnWidth: 0.5,
         },
     },
     {
