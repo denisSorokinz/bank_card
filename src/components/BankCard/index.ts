@@ -1,4 +1,3 @@
-import BankCardWrapper from './BankCardWrapper';
-import BankCard from './BankCard';
+import Container from "./Container";
 
-export {BankCard, BankCardWrapper};
+export { Container as BankCardContainer };

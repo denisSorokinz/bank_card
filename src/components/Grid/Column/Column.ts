@@ -1,36 +1,24 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 
 interface ColumnProps {
     columnWidth?: number;
     noPaddings?: boolean;
+    display?: string;
+    flexDirection?: string;
     justifyContent?: string;
     alignItems?: string;
 }
 
-const Column = styled.div`
-    padding: 0 1rem;
+const Column = styled.div<ColumnProps>`
+    width: ${({ columnWidth: width = 1 }) => `${width * 100}%`};
     height: 100%;
-    width: ${({ columnWidth: width = 1 }: ColumnProps) => `${width * 100}%`};
-    ${({ noPaddings }: ColumnProps) =>
-        noPaddings
-            ? css`
-                  padding: unset;
-              `
-            : null};
-    ${({ justifyContent }: ColumnProps) =>
-        justifyContent
-            ? css`
-                  display: flex;
-                  justify-content: ${justifyContent};
-              `
-            : null};
-    ${({ alignItems }: ColumnProps) =>
-        alignItems
-            ? css`
-                  display: flex;
-                  align-items: ${alignItems};
-              `
-            : null};
+    padding: ${({ noPaddings = false }) => (noPaddings ? null : "0 1rem")};
+    display: ${({ display = null }) => display};
+    flex-direction: ${({ flexDirection = null }) =>
+        flexDirection};
+    justify-content: ${({ justifyContent = null }) =>
+        justifyContent};
+    align-items: ${({ alignItems = null }) => alignItems};
 `;
 
 export default Column;

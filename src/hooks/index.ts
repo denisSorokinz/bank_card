@@ -1,4 +1,5 @@
-import useBankCard from './useBankCard';
-import useDetailsRows from './useDetailsRows';
+import useBankCard from "./useBankCard";
+import useAddFieldModal from "./useAddFieldModal";
+import useDetailsRows from "./useDetailsRows";
 
-export { useBankCard, useDetailsRows };
+export { useBankCard, useAddFieldModal, useDetailsRows };

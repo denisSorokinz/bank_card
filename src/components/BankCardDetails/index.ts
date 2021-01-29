@@ -1,4 +1,3 @@
-import BankCardDetails from "./BankCardDetails";
-import BankCardDetailsWrapper from "./DetailsWrapper";
+import Container from "./Container";
 
-export {BankCardDetails, BankCardDetailsWrapper}
+export { Container as BankCardDetailsContainer };

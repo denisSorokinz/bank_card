@@ -1,20 +1,18 @@
 import React from "react";
-import DetailsForm from "./DetailsForm";
-import DetailsFormLabel from "./DetailsFormLabel";
-import DetailsFormInput from "./DetailsFormInput";
-import DetailsFormButton from "./DetailsFormButton";
-import { Row, Column } from "Components";
-import { StateContainer } from "Contexts";
-import { BankCardJsxFields, BankCardFields } from "Constants";
+import { SubmitButton } from "./styled";
+import { Row, Column } from "Components/Grid";
+import { StyledLabel, StyledInput } from "Components/styled";
+import { CardStateContainer } from "Contexts";
+import { BankCardJsxFields } from "Constants";
 import { useDetailsRows } from "Hooks";
 import { getDetailsDisplayValue } from "Utils";
 
 const BankCardDetails: React.FC = () => {
-    const [cardData, dispatchCardData] = StateContainer.useContainer();
+    const [cardData, dispatchCardData] = CardStateContainer.useContainer();
     let rows = useDetailsRows(BankCardJsxFields);
 
     return (
-        <DetailsForm method="POST" action="#">
+        <form method="POST" action="#">
             {rows.map((row) => {
                 let isContentCentered = row.length == 1 ? "center" : null;
                 return (
@@ -27,13 +25,12 @@ const BankCardDetails: React.FC = () => {
                                 <Column
                                     {...cardField.styleAttributes}
                                     key={cardField.fieldName}
+                                    flexDirection={"column"}
                                 >
-                                    <DetailsFormLabel
-                                        htmlFor={cardField.fieldName}
-                                    >
+                                    <StyledLabel htmlFor={cardField.fieldName}>
                                         {cardField.labelText}
-                                    </DetailsFormLabel>
-                                    <DetailsFormInput
+                                    </StyledLabel>
+                                    <StyledInput
                                         type={cardField.type}
                                         name={cardField.fieldName}
                                         id={cardField.fieldName}
@@ -43,9 +40,7 @@ const BankCardDetails: React.FC = () => {
                                             cardData
                                         )}
                                         onChange={(
-                                            ev: React.FormEvent<
-                                                HTMLInputElement
-                                            >
+                                            ev: React.FormEvent<HTMLInputElement>
                                         ) => {
                                             ev.persist();
                                             dispatchCardData(
@@ -65,12 +60,12 @@ const BankCardDetails: React.FC = () => {
                     </Row>
                 );
             })}
-            <Row marginTopBig>
+            <Row marginTop={"3rem"}>
                 <Column>
-                    <DetailsFormButton>Pay</DetailsFormButton>
+                    <SubmitButton type={"submit"}>Pay</SubmitButton>
                 </Column>
             </Row>
-        </DetailsForm>
+        </form>
     );
 };
 

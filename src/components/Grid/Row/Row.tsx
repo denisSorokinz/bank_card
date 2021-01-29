@@ -1,24 +1,35 @@
 import styled, { css } from "styled-components";
 
 interface RowProps {
-    minHeight?: string | null;
+    display?: string;
     justifyContent?: string | null;
     alignItems?: string | null;
-    marginTopBig?: boolean | null;
+    marginTop?: string | null;
+    marginBottom?: string | null;
+    isFluid?: boolean | null;
+    minHeight?: string | null;
 }
 
-const Row = styled.div`
+const Row = styled.div<RowProps>`
     &:not(:last-of-type) {
         margin-bottom: 1.5rem;
     }
-    margin-top: ${({ marginTopBig }: RowProps) =>
-        marginTopBig ? "3rem" : null};
-    min-height: ${({ minHeight = null }: RowProps) => minHeight};
-    display: flex;
-    justify-content: ${({ justifyContent = null }: RowProps) => justifyContent};
-    align-items: ${({ alignItems = null }: RowProps) => alignItems};
-    flex-wrap: wrap;
-    ${({ minHeight }: RowProps) =>
+    && {
+        margin-bottom: ${({ marginBottom = null }) => marginBottom};
+    }
+    margin-top: ${({ marginTop = null }) => marginTop};
+    min-height: ${({ minHeight = null }) => minHeight};
+    width: ${({ isFluid = true }) => isFluid && "100%"};
+    ${({ display = "flex", justifyContent = null, alignItems = null }) =>
+        display == "flex"
+            ? css<RowProps>`
+                  display: flex;
+                  flex-wrap: wrap;
+                  justify-content: ${() => justifyContent};
+                  align-items: ${() => alignItems};
+              `
+            : null};
+    ${({ minHeight }) =>
         minHeight
             ? css`
                   min-height: ${minHeight};

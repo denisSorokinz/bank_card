@@ -1,4 +1,3 @@
-import React from "react";
 import { BankCardJsxField } from "Entity";
 import BankCardFields from "./BankCardFields";
 import ReducerActions from "./ReducerActions";

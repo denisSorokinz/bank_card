@@ -1,22 +1,12 @@
 import React from "react";
-import styled from "styled-components";
-import BankCardField from "./BankCardField";
-import BackSideLine from "./BackSideLine";
-import { Row, Column } from "Components";
 import colors from "Assets/colors";
-import { BankCardStateToDisplay } from "Entity";
+import { BankCardSideProps } from "Entity";
+import { Row, Column } from "Components/Grid";
+import { FlipWrapper, Field, BackSideLine } from "./styled";
 
-interface BankCardSideProps {
-    BankCardStateToDisplay: BankCardStateToDisplay;
-    className?: string;
-}
-
-const BankCardBackSide: React.FC<BankCardSideProps> = ({
-    className,
-    BankCardStateToDisplay,
-}) => {
+const BackSide: React.FC<BankCardSideProps> = ({ BankCardStateToDisplay }) => {
     return (
-        <div className={className}>
+        <FlipWrapper isFlipped>
             <Row minHeight={"2.5rem"}>
                 <Column noPaddings>
                     <BackSideLine backgroundColor={colors.black} />
@@ -34,9 +24,9 @@ const BankCardBackSide: React.FC<BankCardSideProps> = ({
                     />
                 </Column>
                 <Column columnWidth={0.25} noPaddings alignItems={"center"}>
-                    <BankCardField textBold>
+                    <Field textBold>
                         <span>{BankCardStateToDisplay.secureCode}</span>
-                    </BankCardField>
+                    </Field>
                 </Column>
             </Row>
             <Row minHeight={"1.25rem"}>
@@ -47,20 +37,8 @@ const BankCardBackSide: React.FC<BankCardSideProps> = ({
                     />
                 </Column>
             </Row>
-        </div>
+        </FlipWrapper>
     );
 };
 
-const StyledBankCardBackSide = styled(BankCardBackSide)`
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    padding: 1.5rem 0;
-    -webkit-backface-visibility: hidden; /* Safari */
-    backface-visibility: hidden;
-    transform: rotateY(-180deg);
-    background-color: ${colors.lightPink};
-    border-radius: 1rem;
-`;
-
-export default StyledBankCardBackSide;
+export default BackSide;

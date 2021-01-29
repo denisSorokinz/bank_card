@@ -1,32 +1,21 @@
 import React from "react";
-import styled from "styled-components";
-import { StyledComponentClassNameProp } from "Entity";
-import BankCardInner from "./BankCardInner";
-import BankCardFrontSide from "./BankCardFrontSide";
-import BankCardBackSide from "./BankCardBackSide";
-import { StateContainer } from "Contexts";
+import BankCardFrontSide from "./FrontSide";
+import BankCardBackSide from "./BackSide";
+import { CardStateContainer } from "Contexts";
 import { getBankCardStateToDisplay } from "Utils";
+import { Inner } from "./styled";
 
-const BankCard: React.FC<StyledComponentClassNameProp> = ({ className }) => {
-    const [cardData, dispatchCardData] = StateContainer.useContainer();
+const BankCard: React.FC = () => {
+    const [cardData, dispatchCardData] = CardStateContainer.useContainer();
     const BankCardStateToDisplay = getBankCardStateToDisplay(cardData);
     return (
-        <div className={className}>
-            <BankCardInner isCardFlipped={BankCardStateToDisplay.isCardFlipped} >
-                <BankCardFrontSide BankCardStateToDisplay={BankCardStateToDisplay} />
-                <BankCardBackSide BankCardStateToDisplay={BankCardStateToDisplay} />
-            </BankCardInner>
-        </div>
+        <Inner isCardFlipped={BankCardStateToDisplay.isCardFlipped}>
+            <BankCardFrontSide
+                BankCardStateToDisplay={BankCardStateToDisplay}
+            />
+            <BankCardBackSide BankCardStateToDisplay={BankCardStateToDisplay} />
+        </Inner>
     );
 };
 
-const StyledBankCard = styled(BankCard)`
-    margin: auto;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
-    perspective: 50rem;
-    max-width: 20rem;
-    max-height: 12rem;
-`;
-
-export default StyledBankCard;
+export default BankCard;

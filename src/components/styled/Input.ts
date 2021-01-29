@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import colors from "Assets/colors";
 
-const DetailsFormInput = styled.input`
+const Input = styled.input`
     display: block;
     width: 100%;
     border: 0.1rem solid ${colors.lightGray};
@@ -10,4 +10,4 @@ const DetailsFormInput = styled.input`
     font-size: 1rem;
 `;
 
-export default DetailsFormInput;
+export default Input;

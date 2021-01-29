@@ -1,4 +1,4 @@
-import { ReducerActions, BankCardFields } from "Constants";
+import { ReducerActions } from "Constants";
 
 interface ReducerAction {
     type: ReducerActions;

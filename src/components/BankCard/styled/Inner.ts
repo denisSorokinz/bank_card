@@ -1,23 +1,24 @@
 import { BankCardJsxFields } from "Constants";
 import styled from "styled-components";
 
-interface BankCardInnerProps {
+interface InnerProps {
     isCardFlipped: boolean;
 }
 
-const BankCardInner = styled.div`
+const Inner = styled.div<InnerProps>`
+    margin: auto;
     position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.8s;
-    transform-style: preserve-3d;
+    width: 90%;
+    height: 90%;
     // min-height is calculated dynamically because
     // BankCardFrontSide and BankCardBackSide are position: absolute
     // to achieve a flip effect
     // calculating algorithm: each field needs at least 3 rem of space
     min-height: ${BankCardJsxFields.length * 3}rem;
-    transform: ${({ isCardFlipped }: BankCardInnerProps) =>
-        isCardFlipped ? "rotateY(-180deg)" : null};
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+    transform: ${({ isCardFlipped = false }) =>
+        isCardFlipped && "rotateY(-180deg)"};
 `;
 
-export default BankCardInner;
+export default Inner;

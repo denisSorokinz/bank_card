@@ -5,8 +5,8 @@
     "main": "index.tsx",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "webpack",
-        "start": "webpack-dev-server --open --port='3005'"
+        "build": "webpack --config ./webpack.config.js",
+        "start": "webpack-dev-server --open --port=3005"
     },
     "keywords": [],
     "author": "",

@@ -1,18 +1,18 @@
 import styled, { css } from "styled-components";
 import colors from "Assets/colors";
 
-interface BankCardFieldProps {
+interface FieldProps {
     textBold?: boolean;
     textRight?: boolean;
 }
 
-const BankCardField = styled.span`
+const Field = styled.span<FieldProps>`
     display: block;
+    max-width: 100%;
     overflow-wrap: break-word;
     color: ${colors.darkGray};
-    text-align: ${({ textRight }: BankCardFieldProps) =>
-        textRight ? "right" : null};
-    ${({ textBold: isTextBold }: BankCardFieldProps) =>
+    text-align: ${({ textRight }) => (textRight ? "right" : null)};
+    ${({ textBold: isTextBold }) =>
         isTextBold &&
         css`
             display: flex;
@@ -24,4 +24,4 @@ const BankCardField = styled.span`
         `};
 `;
 
-export default BankCardField;
+export default Field;
