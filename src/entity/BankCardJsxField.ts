@@ -3,7 +3,7 @@ import { BankCardFields, ReducerActions } from "Constants";
 import ReducerAction from "./ReducerAction";
 import BankCardState from "./BankCardState";
 
-interface BankCardField {
+interface BankCardJsxField {
     type: string;
     fieldName: BankCardFields;
     placeholder: string;
@@ -17,4 +17,4 @@ interface BankCardField {
         (action: ReducerAction, state: BankCardState) => void;
 }
 
-export default BankCardField;
+export default BankCardJsxField;

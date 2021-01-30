@@ -2,17 +2,11 @@ import { useState } from "react";
 
 const useAddFieldModal = (): [
     isAddFieldModalShown: Boolean,
-    toggleIsAddFieldModalShown: (
-        ev: React.MouseEvent<HTMLButtonElement, MouseEvent>
-    ) => void
+    toggleIsAddFieldModalShown: () => void
 ] => {
     const [isAddFieldModalShown, setIsAddFieldModalShown] = useState(false);
-    const toggleIsAddFieldModalShown = (
-        ev: React.MouseEvent<HTMLButtonElement, MouseEvent>
-    ) => {
-        ev.preventDefault();
+    const toggleIsAddFieldModalShown = () =>
         setIsAddFieldModalShown(!isAddFieldModalShown);
-    };
     return [isAddFieldModalShown, toggleIsAddFieldModalShown];
 };
 

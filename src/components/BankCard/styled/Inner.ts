@@ -14,7 +14,9 @@ const Inner = styled.div<InnerProps>`
     // BankCardFrontSide and BankCardBackSide are position: absolute
     // to achieve a flip effect
     // calculating algorithm: each field needs at least 3 rem of space
-    min-height: ${BankCardJsxFields.length * 3}rem;
+    /* min-height: ${BankCardJsxFields.length * 3}rem; */
+    min-height: 10rem;
+    max-height: 15rem;
     transition: transform 0.8s;
     transform-style: preserve-3d;
     transform: ${({ isCardFlipped = false }) =>

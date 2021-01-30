@@ -12,10 +12,15 @@ const ModalToggler: React.FC<StyledComponentClassNameProp> = ({
         toggleIsAddFieldModalShown,
     ] = AddFieldModalStateContainer.useContainer();
 
+    function handleSubmit(ev: React.MouseEvent) {
+        ev.preventDefault();
+        toggleIsAddFieldModalShown();
+    }
+
     return (
         <CircleButton
             className={className}
-            onClick={(ev) => toggleIsAddFieldModalShown(ev)}
+            onClick={(ev) => handleSubmit(ev)}
         >
             {children && children}
         </CircleButton>

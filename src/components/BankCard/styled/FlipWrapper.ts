@@ -9,7 +9,7 @@ const FlipWrapper = styled.div<FlipWrapperProps>`
     position: absolute;
     width: 100%;
     height: 100%;
-    padding: 1.5rem;
+    padding: 5vmin;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden; /* Safari */
     transform: ${({ isFlipped = false }) => isFlipped && "rotateY(-180deg)"};

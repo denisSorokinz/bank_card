@@ -1,17 +1,36 @@
 import React from "react";
 import { StyledLabel, StyledInput } from "Components/styled";
 import { AddFieldModalStateContainer } from "Contexts";
-import { StyledAddFieldModal, SubmitButton } from "./styled";
+import { AddFieldForm, CloseModalButton, SubmitButton } from "./styled";
 import { Row, Column } from "Components/Grid";
-import CloseAddFieldModalButton from "./CloseModalButton";
+import { BankCardJsxFields } from "Constants";
 
 const AddFieldModal: React.FunctionComponent = () => {
-    const [isAddFieldModalShown] = AddFieldModalStateContainer.useContainer();
+    const [
+        isAddFieldModalShown,
+        toggleIsAddFieldModalShown,
+    ] = AddFieldModalStateContainer.useContainer();
+
+    function handleSubmit(ev: React.FormEvent) {
+        ev.preventDefault();
+        // CustomFields.push({
+        //     type: "text",
+        //     fieldName: "Test Field",
+        //     placeholder: "Enter card owner's name",
+        //     labelText: "Owner's name",
+        //     reducerActionType: ReducerActions.setOwnerName,
+        // });
+        toggleIsAddFieldModalShown();
+    }
+
     return (
-        <StyledAddFieldModal isAddFieldModalShown={isAddFieldModalShown}>
+        <AddFieldForm
+            isAddFieldModalShown={isAddFieldModalShown}
+            onSubmit={(ev) => handleSubmit(ev)}
+        >
             <Column flexDirection="column" alignItems="center">
                 <Row justifyContent={"flex-end"} marginBottom={"0"}>
-                    <CloseAddFieldModalButton />
+                    <CloseModalButton>+</CloseModalButton>
                 </Row>
                 <Row>
                     <StyledLabel htmlFor="cardFieldName">
@@ -39,7 +58,7 @@ const AddFieldModal: React.FunctionComponent = () => {
                     <SubmitButton type={"submit"}>Add Field</SubmitButton>
                 </Row>
             </Column>
-        </StyledAddFieldModal>
+        </AddFieldForm>
     );
 };
 

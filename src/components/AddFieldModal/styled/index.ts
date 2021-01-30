@@ -1,5 +1,5 @@
-import StyledAddFieldModal from "./StyledAddFieldModal";
-import StyledCloseModalButton from "./StyledCloseModalButton";
+import AddFieldForm from "./AddFieldForm";
+import CloseModalButton from "./CloseModalButton";
 import SubmitButton from "./SubmitButton";
 
-export { StyledAddFieldModal, StyledCloseModalButton, SubmitButton };
+export { AddFieldForm, CloseModalButton, SubmitButton };

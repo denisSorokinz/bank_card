@@ -7,8 +7,6 @@ import {
     AddFieldModal,
     AddFieldButton,
 } from "Components";
-import { StyledAddFieldButton } from "Components/AddFieldButton/styled";
-import { StyledComponentClassNameProp } from "Entity";
 
 const App: React.FC = () => {
     return (

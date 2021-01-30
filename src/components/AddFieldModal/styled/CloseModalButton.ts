@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import colors from "Assets/colors";
-import AddFieldModalToggler from "Components/AddFieldModal/ModalToggler";
+import AddFieldModalToggler from "Components/AddFieldModal/AddFieldModalToggler";
 
-const StyledCloseAddFieldModalButton = styled(AddFieldModalToggler)`
+const CloseModalButton = styled(AddFieldModalToggler)`
     && {
         font-size: 2rem;
         color: ${colors.white};
@@ -11,4 +11,4 @@ const StyledCloseAddFieldModalButton = styled(AddFieldModalToggler)`
     }
 `;
 
-export default StyledCloseAddFieldModalButton;
+export default CloseModalButton;

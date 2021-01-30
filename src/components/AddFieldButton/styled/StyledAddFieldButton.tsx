@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import colors from "Assets/colors";
-import AddFieldModalToggler from "Components/AddFieldModal/ModalToggler";
-import { StyledComponentClassNameProp } from "Entity";
+import AddFieldModalToggler from "Components/AddFieldModal/AddFieldModalToggler";
 
 const StyledAddFieldButton = styled(AddFieldModalToggler)`
     position: fixed;
@@ -11,7 +10,7 @@ const StyledAddFieldButton = styled(AddFieldModalToggler)`
     color: ${colors.white};
     background-color: ${colors.aquamarine};
     opacity: 0.75;
-    transition: opacity 0.25s ease-in-out;
+    transition: opacity 0.05s ease-in-out;
     &:active {
         opacity: 1;
     }

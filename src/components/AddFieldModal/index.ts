@@ -1,4 +1,4 @@
 import AddFieldModal from "./AddFieldModal";
-import ModalToggler from "./ModalToggler";
+import AddFieldModalToggler from "./AddFieldModalToggler";
 
-export { AddFieldModal, ModalToggler as AddFieldModalToggler};
+export { AddFieldModal, AddFieldModalToggler };

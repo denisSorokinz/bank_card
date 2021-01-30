@@ -6,9 +6,20 @@
     font-family: "inter--bold"
     src: url("../fonts/inter/inter--bold.ttf")
 
+@import "./fluid-type.scss"
+
+$min_width: 320px
+$max_width: 1200px
+$min_font: 16px
+$max_font: 24px
+
+html
+  @include fluid-type($min_width, $max_width, $min_font, $max_font)
+
+
 body
-    width: 100vw
-    height: 100vh
+    // width: 100vw
+    // height: 100vh
     font-family: "inter--medium", sans-serif
     background-color: #309d9d
     position: relative

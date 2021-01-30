@@ -1,9 +1,9 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import colors from "Assets/colors";
 import { AddFieldModalProps } from "Entity";
 import { StyledLabel } from "Components/styled";
 
-const StyledAddFieldModal = styled.form<AddFieldModalProps>`
+const AddFieldForm = styled.form<AddFieldModalProps>`
     position: fixed;
     top: 39.5vh;
     left: 0;
@@ -11,13 +11,21 @@ const StyledAddFieldModal = styled.form<AddFieldModalProps>`
     width: 100vw;
     height: 60.5vh;
     transition: transform 0.5s ease-in-out;
-    transform: ${({ isAddFieldModalShown }) =>
-        isAddFieldModalShown ? "translateY(0)" : "translateY(100%)"};
+    ${({ isAddFieldModalShown }) =>
+        isAddFieldModalShown
+            ? css`
+                  transform: translateY(0);
+                  touch-action: auto;
+              `
+            : css`
+                  transform: translateY(100%);
+                  touch-action: none;
+              `};
     background-color: ${colors.aquamarine};
     border-top-left-radius: 2rem;
     border-top-right-radius: 2rem;
     padding: 1rem;
-    touch-action: none;
+    overflow-y: scroll;
     label {
         display: block;
         color: ${colors.white};
@@ -33,4 +41,4 @@ const StyledAddFieldModal = styled.form<AddFieldModalProps>`
     }
 `;
 
-export default StyledAddFieldModal;
+export default AddFieldForm;
