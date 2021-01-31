@@ -7,10 +7,9 @@ const ModalToggler: React.FC<StyledComponentClassNameProp> = ({
     className,
     children,
 }) => {
-    const [
-        _,
+    const {
         toggleIsAddFieldModalShown,
-    ] = AddFieldModalStateContainer.useContainer();
+    } = AddFieldModalStateContainer.useContainer();
 
     function handleSubmit(ev: React.MouseEvent) {
         ev.preventDefault();
@@ -18,10 +17,7 @@ const ModalToggler: React.FC<StyledComponentClassNameProp> = ({
     }
 
     return (
-        <CircleButton
-            className={className}
-            onClick={(ev) => handleSubmit(ev)}
-        >
+        <CircleButton className={className} onClick={(ev) => handleSubmit(ev)}>
             {children && children}
         </CircleButton>
     );

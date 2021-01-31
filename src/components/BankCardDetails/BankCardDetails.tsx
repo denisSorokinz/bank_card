@@ -1,23 +1,27 @@
 import React from "react";
 import { SubmitButton } from "./styled";
 import { Row, Column } from "Components/Grid";
-import { CardStateContainer } from "Contexts";
+import { AddFieldModalStateContainer, CardStateContainer } from "Contexts";
 import { BankCardJsxFields } from "Constants";
 import { useDetailsRows } from "Hooks";
 import BankCardStandardFields from "./BankCardStandardFields";
+import BankCardCustomFields from "./BankCardCustomFields";
+import { useContainer } from "unstated-next";
 
 const BankCardDetails: React.FC = () => {
     const [cardData, dispatchCardData] = CardStateContainer.useContainer();
-    let rows = useDetailsRows(BankCardJsxFields);
+    const standardFields = useDetailsRows(BankCardJsxFields);
+    const { customFields } = useContainer(AddFieldModalStateContainer);
 
     return (
         <form method="POST" action="#">
             <BankCardStandardFields
-                standardFields={rows}
+                standardFields={standardFields}
                 cardData={cardData}
                 dispatchCardData={dispatchCardData}
             />
-            <Row>
+            <BankCardCustomFields customFields={customFields} />
+            <Row marginBottom={"0"}>
                 <Column>
                     <SubmitButton type={"submit"}>Pay</SubmitButton>
                 </Column>

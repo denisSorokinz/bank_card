@@ -1,5 +1,4 @@
-import { Row, Column } from "Components/Grid";
-import { StyledLabel, StyledInput } from "Components/styled";
+import { Row } from "Components/Grid";
 import { ReducerActions } from "Constants";
 import {
     BankCardJsxFieldStandard,

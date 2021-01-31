@@ -3,23 +3,30 @@ import { StyledLabel, StyledInput } from "Components/styled";
 import { AddFieldModalStateContainer } from "Contexts";
 import { AddFieldForm, CloseModalButton, SubmitButton } from "./styled";
 import { Row, Column } from "Components/Grid";
-import { BankCardJsxFields } from "Constants";
 
 const AddFieldModal: React.FunctionComponent = () => {
-    const [
+    const {
         isAddFieldModalShown,
         toggleIsAddFieldModalShown,
-    ] = AddFieldModalStateContainer.useContainer();
+        customFields,
+        setCustomFields,
+    } = AddFieldModalStateContainer.useContainer();
 
     function handleSubmit(ev: React.FormEvent) {
         ev.preventDefault();
-        // CustomFields.push({
-        //     type: "text",
-        //     fieldName: "Test Field",
-        //     placeholder: "Enter card owner's name",
-        //     labelText: "Owner's name",
-        //     reducerActionType: ReducerActions.setOwnerName,
-        // });
+        setCustomFields([
+            ...customFields,
+            {
+                type: "text",
+                fieldName: "Test Field",
+                placeholder: "Enter card owner's name",
+                labelText: "Owner's name",
+                value: "whatever",
+                onChange: () => {
+                    console.log("Hi!");
+                },
+            },
+        ]);
         toggleIsAddFieldModalShown();
     }
 

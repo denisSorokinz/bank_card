@@ -1,8 +1,5 @@
-import { BankCardFields } from "Constants";
-
 interface BankCardJsxFieldGeneric {
     type: string;
-    fieldName: BankCardFields;
     placeholder: string;
     labelText: string;
     styleAttributes?: {

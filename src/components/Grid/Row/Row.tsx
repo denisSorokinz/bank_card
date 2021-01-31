@@ -11,13 +11,8 @@ interface RowProps {
 }
 
 const Row = styled.div<RowProps>`
-    &:not(:last-of-type) {
-        margin-bottom: 1.5rem;
-    }
-    && {
-        margin-bottom: ${({ marginBottom = null }) => marginBottom};
-    }
     margin-top: ${({ marginTop = null }) => marginTop};
+    margin-bottom: ${({ marginBottom = null }) => marginBottom || "1.5rem"};
     min-height: ${({ minHeight = null }) => minHeight};
     width: ${({ isFluid = true }) => isFluid && "100%"};
     ${({ display = "flex", justifyContent = null, alignItems = null }) =>

@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { BankCardJsxFieldStandard } from "Entity";
 
 const useDetailsRows = (

@@ -14,8 +14,8 @@ const App: React.FC = () => {
             <Header>Bank Card</Header>
             <CardStateContainer.Provider>
                 <BankCardContainer />
-                <BankCardDetailsContainer />
                 <AddFieldModalStateContainer.Provider>
+                    <BankCardDetailsContainer />
                     <AddFieldModal />
                     <AddFieldButton />
                 </AddFieldModalStateContainer.Provider>
