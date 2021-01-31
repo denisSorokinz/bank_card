@@ -1,4 +1,5 @@
-import BankCardJsxField from "./BankCardJsxField";
+import BankCardJsxFieldStandard from "./BankCardJsxFieldStandard";
+import BankCardJsxFieldCustom from "./BankCardJsxFieldCustom";
 import BankCardState from "./BankCardState";
 import BankCardStateToDisplay from "./BankCardStateToDisplay";
 import ReducerAction from "./ReducerAction";
@@ -8,7 +9,8 @@ import BankCardSideProps from "./BankCardSideProps";
 import StyledComponentClassNameProp from "./StyledComponentClassNameProp";
 
 export {
-    BankCardJsxField,
+    BankCardJsxFieldStandard,
+    BankCardJsxFieldCustom,
     BankCardState,
     BankCardStateToDisplay,
     ReducerAction,

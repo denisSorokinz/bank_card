@@ -1,17 +1,15 @@
 import { useState } from "react";
-import { BankCardJsxField } from "Entity";
+import { BankCardJsxFieldStandard } from "Entity";
 
 const useDetailsRows = (
-    BankCardJsxFields: BankCardJsxField[]
-): Array<Array<BankCardJsxField>> => {
-    let [lastRowStartIndex, setLastRowStartIndex] = useState(0);
-    let [currentFieldIndex, setCurrentFieldIndex] = useState(0);
+    BankCardJsxFields: BankCardJsxFieldStandard[]
+): Array<Array<BankCardJsxFieldStandard>> => {
     const columnWidths = BankCardJsxFields.map((column) => {
         return column.styleAttributes?.columnWidth
             ? column.styleAttributes.columnWidth
             : 1;
     });
-    let rows: [BankCardJsxField[]] = [[]];
+    let rows: [BankCardJsxFieldStandard[]] = [[]];
     let currentRow = 0;
     let columnWidthsSum = 0;
     columnWidths.map((val, index) => {

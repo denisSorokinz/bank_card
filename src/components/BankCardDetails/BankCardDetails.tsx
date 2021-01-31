@@ -4,7 +4,7 @@ import { Row, Column } from "Components/Grid";
 import { CardStateContainer } from "Contexts";
 import { BankCardJsxFields } from "Constants";
 import { useDetailsRows } from "Hooks";
-import BankCardFields from "./BankCardFields";
+import BankCardStandardFields from "./BankCardStandardFields";
 
 const BankCardDetails: React.FC = () => {
     const [cardData, dispatchCardData] = CardStateContainer.useContainer();
@@ -12,8 +12,8 @@ const BankCardDetails: React.FC = () => {
 
     return (
         <form method="POST" action="#">
-            <BankCardFields
-                jsxFields={rows}
+            <BankCardStandardFields
+                standardFields={rows}
                 cardData={cardData}
                 dispatchCardData={dispatchCardData}
             />

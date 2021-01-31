@@ -1,10 +1,11 @@
 import { BankCardState } from "Entity";
-import { OwnerNameLength, BankCardFields } from "Constants";
+import { BankCardFieldsLength, BankCardFields } from "Constants";
 
 const applyPayloadToOwnerName = (
     state: BankCardState,
     payload: string
 ): BankCardState => {
+    const { OwnerNameLength } = BankCardFieldsLength;
     // * Copy state in case if the target value is not primitive
     const stateCopy = Object.assign({}, state);
     let { ownerName: currentOwnerName } = stateCopy;

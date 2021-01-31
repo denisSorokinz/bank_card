@@ -1,4 +1,4 @@
-import { CardNumberLength, CardNumberSpacing } from "Constants";
+import { BankCardFieldsLength } from "Constants";
 import { cardNumberType } from "Types";
 
 const getCardNumberToDisplay = (cardNumber: cardNumberType): string => {
@@ -10,14 +10,15 @@ const getCardNumberToDisplay = (cardNumber: cardNumberType): string => {
 };
 
 const addAsterisksToEnd = (cardNumber: cardNumberType) => {
+    const { CardNumberLength } = BankCardFieldsLength;
     if (cardNumber == null) return "•".repeat(CardNumberLength);
     return (
-        cardNumber +
-        "•".repeat(CardNumberLength - cardNumber.toString().length)
+        cardNumber + "•".repeat(CardNumberLength - cardNumber.toString().length)
     );
 };
 
 const addSpacesBetweenCharacters = (cardNumberCharacters: string[]) => {
+    const { CardNumberSpacing } = BankCardFieldsLength;
     let index = 0;
     let cardNumberCharactersCopy = cardNumberCharacters.slice();
     // add spaces every [CardNumberSpacing] characters

@@ -1,4 +1,4 @@
-import { BankCardJsxField } from "Entity";
+import { BankCardJsxFieldStandard } from "Entity";
 import BankCardFields from "./BankCardFields";
 import ReducerActions from "./ReducerActions";
 
@@ -39,6 +39,6 @@ const BankCardJsxFields = [
         labelText: "Owner's name",
         reducerActionType: ReducerActions.setOwnerName,
     },
-] as BankCardJsxField[];
+] as BankCardJsxFieldStandard[];
 
 export default BankCardJsxFields;

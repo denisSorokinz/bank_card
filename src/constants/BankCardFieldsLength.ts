@@ -3,9 +3,11 @@ const CardNumberSpacing = 4; // space every CardNumberSpacing chars
 const SecureCodeLength = 4;
 const OwnerNameLength = 26;
 
-export {
+const BankCardFieldsLength = {
     CardNumberLength,
     CardNumberSpacing,
     SecureCodeLength,
     OwnerNameLength
-};
+}
+
+export default BankCardFieldsLength;

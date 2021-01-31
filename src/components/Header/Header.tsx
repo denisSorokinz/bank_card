@@ -5,11 +5,10 @@ const Header = styled.header`
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 2.5vh;
     color: ${colors.white};
     text-align: center;
-    font-size: 2.5vh;
-    padding: 2.5vh 0;
+    font-size: 3.5vh;
+    padding: 1rem 0 0.5rem;
 `;
 
 export default Header;

@@ -1,4 +1,4 @@
-import { CardNumberLength, BankCardFields } from "Constants";
+import { BankCardFieldsLength, BankCardFields } from "Constants";
 import { BankCardState } from "Entity";
 
 const applyPayloadToCardNumber = (
@@ -10,7 +10,7 @@ const applyPayloadToCardNumber = (
     let { cardNumber: currentCardNumber } = stateCopy;
     if (currentCardNumber != null) {
         currentCardNumber =
-            payload.toString().length > CardNumberLength
+            payload.toString().length > BankCardFieldsLength.CardNumberLength
                 ? currentCardNumber
                 : parseInt(payload);
     } else {

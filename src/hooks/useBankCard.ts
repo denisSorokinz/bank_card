@@ -1,16 +1,17 @@
 import { useReducer } from "react";
+import { BankCardState, ReducerAction, ReducerDispatcher } from "Entity";
 import {
-    BankCardState,
-    ReducerAction,
-    ReducerDispatcher,
-} from "Entity";
-import { BankCardFields, ReducerActions } from "Constants";
+    BankCardFields,
+    BankCardFieldsLength,
+    ReducerActions,
+} from "Constants";
 import {
     applyPayloadToCardNumber,
     applyPayloadToExpiryDate,
     applyPayloadToSecureCode,
     applyPayloadToOwnerName,
 } from "Utils";
+import BankCard from "Components/BankCard/BankCard";
 const useBankCard = (
     initialState: BankCardState = {
         [BankCardFields.cardNumber]: null,
@@ -29,34 +30,43 @@ const useBankCard = (
     return [cardData, setCardData];
 };
 
-const reducer = (state: BankCardState, action: ReducerAction) => {
+const reducer = (
+    state: BankCardState,
+    action: ReducerAction
+): BankCardState => {
     // ! means element exists
     if (action.type in ReducerActions) {
-        let modifiedState;
+        let modifiedState = state;
         switch (action.type) {
             case ReducerActions.setCardNumber:
-                modifiedState = applyPayloadToCardNumber(
-                    state,
-                    action.payload
-                );
+                const { CardNumberLength } = BankCardFieldsLength;
+                if (action.payload.length <= CardNumberLength) {
+                    modifiedState = applyPayloadToCardNumber(
+                        state,
+                        action.payload
+                    );
+                }
                 break;
             case ReducerActions.setExpiryDate:
-                modifiedState = applyPayloadToExpiryDate(
-                    state,
-                    action.payload
-                );
+                modifiedState = applyPayloadToExpiryDate(state, action.payload);
                 break;
             case ReducerActions.setSecureCode:
-                modifiedState = applyPayloadToSecureCode(
-                    state,
-                    action.payload
-                );
+                const { SecureCodeLength } = BankCardFieldsLength;
+                if (action.payload.length <= SecureCodeLength) {
+                    modifiedState = applyPayloadToSecureCode(
+                        state,
+                        action.payload
+                    );
+                }
                 break;
             case ReducerActions.setOwnerName:
-                modifiedState = applyPayloadToOwnerName(
-                    state,
-                    action.payload
-                );
+                const { OwnerNameLength } = BankCardFieldsLength;
+                if (action.payload.length <= OwnerNameLength) {
+                    modifiedState = applyPayloadToOwnerName(
+                        state,
+                        action.payload
+                    );
+                }
                 break;
         }
         return modifiedState;

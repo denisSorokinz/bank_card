@@ -1,8 +1,8 @@
-import { BankCardJsxField, BankCardState } from "Entity";
+import { BankCardJsxFieldStandard, BankCardState } from "Entity";
 import addZeroIfLessThanTen from "./addZeroIfLessThanTen";
 
 const getDetailsDisplayValue = (
-    cardField: BankCardJsxField,
+    cardField: BankCardJsxFieldStandard,
     state: BankCardState
 ): string => {
     if (state.expiryDate && cardField.type == "date") {
@@ -17,10 +17,5 @@ const getDetailsDisplayValue = (
         ? state[cardField.fieldName]!.toString()
         : "";
 };
-
-function getLang() {
-    if (navigator.languages != undefined) return navigator.languages[0];
-    else return navigator.language;
-}
 
 export default getDetailsDisplayValue;
