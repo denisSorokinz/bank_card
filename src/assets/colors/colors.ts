@@ -8,5 +8,6 @@ export default {
     "gray": "#727272",
     "lightGray": "#afafaf",
     "darkGray": "#555",
-    "yellow": "#e5dca5"
+    "yellow": "#e5dca5",
+    "red": "#f00"
 }

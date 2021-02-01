@@ -1,26 +1,39 @@
 import React from "react";
+import { useContainer } from "unstated-next";
 import { SubmitButton } from "./styled";
-import { Row, Column } from "Components/Grid";
+import { useDetailsRows } from "Hooks";
+import { BankCardJsxFieldCustom, BankCardJsxFieldStandard } from "Entity";
 import { AddFieldModalStateContainer, CardStateContainer } from "Contexts";
 import { BankCardJsxFields } from "Constants";
-import { useDetailsRows } from "Hooks";
 import BankCardStandardFields from "./BankCardStandardFields";
 import BankCardCustomFields from "./BankCardCustomFields";
-import { useContainer } from "unstated-next";
+import { Row, Column } from "Components/Grid";
 
 const BankCardDetails: React.FC = () => {
     const [cardData, dispatchCardData] = CardStateContainer.useContainer();
-    const standardFields = useDetailsRows(BankCardJsxFields);
+    const standardJsxFields = useDetailsRows(BankCardJsxFields);
+
     const { customFields } = useContainer(AddFieldModalStateContainer);
+    const customJsxFields = useDetailsRows(customFields);
 
     return (
         <form method="POST" action="#">
-            <BankCardStandardFields
-                standardFields={standardFields}
-                cardData={cardData}
-                dispatchCardData={dispatchCardData}
-            />
-            <BankCardCustomFields customFields={customFields} />
+            {standardJsxFields && (
+                <BankCardStandardFields
+                    standardJsxFields={
+                        standardJsxFields as BankCardJsxFieldStandard[][]
+                    }
+                    cardData={cardData}
+                    dispatchCardData={dispatchCardData}
+                />
+            )}
+            {customJsxFields && (
+                <BankCardCustomFields
+                    customJsxFields={
+                        customJsxFields as BankCardJsxFieldCustom[][]
+                    }
+                />
+            )}
             <Row marginBottom={"0"}>
                 <Column>
                     <SubmitButton type={"submit"}>Pay</SubmitButton>

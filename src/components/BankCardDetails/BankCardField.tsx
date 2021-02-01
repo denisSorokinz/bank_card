@@ -16,10 +16,10 @@ const BankCardField: React.FC<BankCardJsxFieldCustom> = ({
         <Column {...styleAttributes} flexDirection={"column"}>
             <StyledLabel htmlFor={fieldName}>{labelText}</StyledLabel>
             <StyledInput
-                type={type}
-                name={fieldName}
                 id={fieldName}
+                name={fieldName}
                 placeholder={placeholder}
+                type={type}
                 value={value}
                 onChange={onChange}
             />

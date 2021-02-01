@@ -1,8 +1,20 @@
-import React from "react";
-import { StyledLabel, StyledInput } from "Components/styled";
+import React, { useEffect } from "react";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { AddFieldModalStateContainer } from "Contexts";
-import { AddFieldForm, CloseModalButton, SubmitButton } from "./styled";
+import {
+    AddFieldForm,
+    CloseModalButton,
+    SubmitButton,
+    ErrorSpan,
+} from "./styled";
+import { StyledLabel, StyledInput } from "Components/styled";
 import { Row, Column } from "Components/Grid";
+
+interface AddFieldFormValues {
+    cardFieldName: string;
+    cardFieldType: string;
+    cardFieldColumnWidth: string;
+}
 
 const AddFieldModal: React.FunctionComponent = () => {
     const {
@@ -12,28 +24,37 @@ const AddFieldModal: React.FunctionComponent = () => {
         setCustomFields,
     } = AddFieldModalStateContainer.useContainer();
 
-    function handleSubmit(ev: React.FormEvent) {
-        ev.preventDefault();
+    const {
+        register,
+        handleSubmit,
+        reset,
+        errors,
+    } = useForm<AddFieldFormValues>();
+    console.log(errors);
+    const onSubmit: SubmitHandler<AddFieldFormValues> = ({
+        cardFieldName,
+        cardFieldType,
+        cardFieldColumnWidth,
+    }) => {
         setCustomFields([
             ...customFields,
             {
-                type: "text",
-                fieldName: "Test Field",
-                placeholder: "Enter card owner's name",
-                labelText: "Owner's name",
-                value: "whatever",
-                onChange: () => {
-                    console.log("Hi!");
+                fieldName: cardFieldName,
+                labelText: cardFieldName,
+                placeholder: `Enter ${cardFieldName}`,
+                type: cardFieldType,
+                styleAttributes: {
+                    columnWidth: parseFloat(cardFieldColumnWidth) || 1,
                 },
             },
         ]);
         toggleIsAddFieldModalShown();
-    }
-
+        reset();
+    };
     return (
         <AddFieldForm
             isAddFieldModalShown={isAddFieldModalShown}
-            onSubmit={(ev) => handleSubmit(ev)}
+            onSubmit={handleSubmit(onSubmit)}
         >
             <Column flexDirection="column" alignItems="center">
                 <Row justifyContent={"flex-end"} marginBottom={"0"}>
@@ -43,23 +64,45 @@ const AddFieldModal: React.FunctionComponent = () => {
                     <StyledLabel htmlFor="cardFieldName">
                         Field Name
                     </StyledLabel>
-                    <StyledInput type="text" name="cardFieldName" />
+                    <StyledInput
+                        ref={register({ required: true })}
+                        type="text"
+                        name="cardFieldName"
+                    />
+                    {errors.cardFieldName && (
+                        <ErrorSpan>Enter a valid field name</ErrorSpan>
+                    )}
                 </Row>
                 <Row minHeight={"2rem"}>
                     <StyledLabel htmlFor="cardFieldType" marginBottom={"0"}>
                         Field Type
                     </StyledLabel>
-                    <select name="cardFieldType">
+                    <select
+                        ref={register({ required: true })}
+                        name="cardFieldType"
+                    >
                         <option value="text">Text</option>
                         <option value="number">Number</option>
                         <option value="date">Date</option>
+                        <option value="email">Email</option>
                     </select>
+                    {errors.cardFieldType && (
+                        <ErrorSpan>Choose a field type</ErrorSpan>
+                    )}
                 </Row>
                 <Row>
-                    <StyledLabel htmlFor="cardFieldColumnSize">
-                        Width (out of 1)
+                    <StyledLabel htmlFor="cardFieldColumnWidth">
+                        Column Width
                     </StyledLabel>
-                    <StyledInput type="number" name="cardFieldColumnSize" />
+                    <StyledInput
+                        ref={register({ min: 0.25, max: 1, required: true })}
+                        type="number"
+                        step={0.01}
+                        name="cardFieldColumnWidth"
+                    />
+                    {errors.cardFieldColumnWidth && (
+                        <ErrorSpan>Enter a value from 0 to 1</ErrorSpan>
+                    )}
                 </Row>
                 <Row>
                     <SubmitButton type={"submit"}>Add Field</SubmitButton>

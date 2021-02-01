@@ -4,27 +4,31 @@ import { BankCardJsxFieldCustom } from "Entity";
 import BankCardField from "./BankCardField";
 
 const BankCardCustomFields: React.FC<{
-    customFields: BankCardJsxFieldCustom[];
-}> = ({ customFields }) => {
+    customJsxFields: BankCardJsxFieldCustom[][];
+}> = ({ customJsxFields }) => {
     return (
         <>
-            {(customFields.length &&
-                customFields.map((field) => {
-                    return (
-                        <Row key={field.fieldName}>
+            {customJsxFields.map((row) => {
+                let justifyContent = row.length == 1 ? "center" : "space-evenly";
+                console.log(row);
+                return (
+                    <Row
+                        key={row[0] && row[0].fieldName}
+                        justifyContent={justifyContent}
+                    >
+                        {row.map((cardField) => (
                             <BankCardField
-                                fieldName={field.fieldName}
-                                labelText={field.labelText}
-                                placeholder={field.placeholder}
-                                type={field.type}
-                                styleAttributes={field.styleAttributes}
-                                value={field.value}
-                                onChange={field.onChange}
+                                key={cardField.fieldName}
+                                fieldName={cardField.fieldName}
+                                labelText={cardField.labelText}
+                                placeholder={cardField.placeholder}
+                                type={cardField.type}
+                                styleAttributes={cardField.styleAttributes}
                             />
-                        </Row>
-                    );
-                })) ||
-                null}
+                        ))}
+                    </Row>
+                );
+            })}
         </>
     );
 };

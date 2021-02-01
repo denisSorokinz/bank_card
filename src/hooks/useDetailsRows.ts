@@ -1,14 +1,17 @@
-import { BankCardJsxFieldStandard } from "Entity";
+import { BankCardJsxFieldStandard, BankCardJsxFieldCustom } from "Entity";
 
 const useDetailsRows = (
-    BankCardJsxFields: BankCardJsxFieldStandard[]
-): Array<Array<BankCardJsxFieldStandard>> => {
+    BankCardJsxFields: (BankCardJsxFieldStandard | BankCardJsxFieldCustom)[]
+): Array<Array<BankCardJsxFieldStandard | BankCardJsxFieldCustom>> | null => {
+    if(!(BankCardJsxFields.length > 0)) {
+        return null;
+    }
     const columnWidths = BankCardJsxFields.map((column) => {
         return column.styleAttributes?.columnWidth
             ? column.styleAttributes.columnWidth
             : 1;
     });
-    let rows: [BankCardJsxFieldStandard[]] = [[]];
+    let rows: [(BankCardJsxFieldStandard | BankCardJsxFieldCustom)[]] = [[]];
     let currentRow = 0;
     let columnWidthsSum = 0;
     columnWidths.map((val, index) => {

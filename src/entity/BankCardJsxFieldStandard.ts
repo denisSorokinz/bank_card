@@ -6,9 +6,9 @@ import BankCardState from "./BankCardState";
 
 interface BankCardJsxFieldStandard extends BankCardJsxFieldGeneric {
     fieldName: BankCardFields;
-    reducerActionType: ReducerActions;
     value: BankCardFieldTypes;
     onChange: (action: ReducerAction, state: BankCardState) => void;
+    reducerActionType: ReducerActions;
 }
 
 export default BankCardJsxFieldStandard;
