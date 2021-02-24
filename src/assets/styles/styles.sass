@@ -25,7 +25,15 @@ body
     position: relative
     main
         height: 100%
-    main > #root
-        height: 100%
-        display: flex
-        flex-direction: column
+        & > #root
+            height: 100%
+            display: flex
+            flex-direction: column
+            & > *
+                max-width: 35rem
+
+@media screen and (min-width: 500px)
+    body main #root
+        align-items: center
+        header + div
+            width: 35rem
