@@ -6,7 +6,7 @@ import { StyledLabel } from "Components/styled";
 const AddFieldForm = styled.form<AddFieldModalProps>`
     position: fixed;
     top: 39.5vh;
-    left: 0;
+    left: 50%;
     z-index: 2;
     width: 100vw;
     height: 60.5vh;
@@ -14,11 +14,11 @@ const AddFieldForm = styled.form<AddFieldModalProps>`
     ${({ isAddFieldModalShown }) =>
         isAddFieldModalShown
             ? css`
-                  transform: translateY(0);
+                  transform: translate(-50%, 0);
                   touch-action: auto;
               `
             : css`
-                  transform: translateY(100%);
+                  transform: translate(-50%, 100%);
                   touch-action: none;
               `};
     background-color: ${colors.aquamarine};

@@ -3,7 +3,7 @@ import colors from "Assets/colors";
 import AddFieldModalToggler from "Components/AddFieldModal/AddFieldModalToggler";
 
 const StyledAddFieldButton = styled(AddFieldModalToggler)`
-    position: fixed;
+    position: absolute;
     z-index: 1;
     right: 1rem;
     bottom: 1rem;

@@ -5,7 +5,6 @@ import {
     BankCardContainer,
     BankCardDetailsContainer,
     AddFieldModal,
-    AddFieldButton,
 } from "Components";
 
 const App: React.FC = () => {
@@ -17,7 +16,6 @@ const App: React.FC = () => {
                 <AddFieldModalStateContainer.Provider>
                     <BankCardDetailsContainer />
                     <AddFieldModal />
-                    <AddFieldButton />
                 </AddFieldModalStateContainer.Provider>
             </CardStateContainer.Provider>
         </React.Fragment>
