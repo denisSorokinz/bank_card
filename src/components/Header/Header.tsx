@@ -7,7 +7,7 @@ const Header = styled.header`
     align-items: center;
     color: ${colors.white};
     text-align: center;
-    font-size: 3rem;
+    font-size: 2rem;
     padding: 1rem 0 0.5rem;
 `;
 
