@@ -3,10 +3,8 @@ import colors from "Assets/colors";
 import AddFieldModalToggler from "Components/AddFieldModal/AddFieldModalToggler";
 
 const StyledAddFieldButton = styled(AddFieldModalToggler)`
-    position: absolute;
-    z-index: 1;
-    right: 1rem;
-    bottom: 1rem;
+    margin-top: 1.5rem;
+    margin-left: auto;
     color: ${colors.white};
     background-color: ${colors.aquamarine};
     opacity: 0.75;

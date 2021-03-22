@@ -11,7 +11,7 @@ import {
     applyPayloadToSecureCode,
     applyPayloadToOwnerName,
 } from "Utils";
-import BankCard from "Components/BankCard/BankCard";
+
 const useBankCard = (
     initialState: BankCardState = {
         [BankCardFields.cardNumber]: null,

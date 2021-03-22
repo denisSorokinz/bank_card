@@ -58,39 +58,6 @@ const BankCardStandardFields: React.FC<{
                                     )
                                 }
                             />
-                            // <Column
-                            //     {...cardField.styleAttributes}
-                            //     key={cardField.fieldName}
-                            //     flexDirection={"column"}
-                            // >
-                            //     <StyledLabel htmlFor={cardField.fieldName}>
-                            //         {cardField.labelText}
-                            //     </StyledLabel>
-                            //     <StyledInput
-                            //         type={cardField.type}
-                            //         name={cardField.fieldName}
-                            //         id={cardField.fieldName}
-                            //         placeholder={cardField.placeholder}
-                            //         value={getDetailsDisplayValue(
-                            //             cardField,
-                            //             cardData
-                            //         )}
-                            //         onChange={(
-                            //             ev: React.FormEvent<HTMLInputElement>
-                            //         ) => {
-                            //             ev.persist();
-                            //             dispatchCardData(
-                            //                 {
-                            //                     type:
-                            //                         cardField.reducerActionType,
-                            //                     payload:
-                            //                         ev.currentTarget.value,
-                            //                 },
-                            //                 cardData
-                            //             );
-                            //         }}
-                            //     />
-                            // </Column>
                         ))}
                     </Row>
                 );
